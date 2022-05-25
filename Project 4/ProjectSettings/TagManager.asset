@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
+  - Foreground
+  - DeadZone
+  - Enemies
   - 
   - 
   - 
@@ -50,8 +50,14 @@ TagManager:
   - name: Environments
     uniqueID: 3374811651
     locked: 0
+  - name: Enemies
+    uniqueID: 2367200447
+    locked: 0
   - name: ForeGround
     uniqueID: 1789328549
+    locked: 0
+  - name: DeadZone
+    uniqueID: 3876745519
     locked: 0
   - name: Player
     uniqueID: 3643752435
