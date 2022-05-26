@@ -17,11 +17,8 @@ namespace Project4.Concretes.Movements
         }
         public void JumpAction()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerRigidbody2D.velocity = Vector2.zero;
-                playerRigidbody2D.AddForce(Vector2.up * jumpForce);
-            }
+            playerRigidbody2D.velocity = Vector2.zero;
+            playerRigidbody2D.AddForce(Vector2.up * jumpForce);
         }
     }
 
