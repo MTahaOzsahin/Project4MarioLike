@@ -6,6 +6,7 @@ using Project4.Concretes.ExtensionMethods;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Project4.Concretes.Uis;
 
 namespace Project4.Concretes.Controllers
 {
@@ -24,6 +25,7 @@ namespace Project4.Concretes.Controllers
         Health health;
         Damage damage;
         AudioSource audioSource;
+        
 
         float horizontal;
         float vertical;
@@ -45,6 +47,14 @@ namespace Project4.Concretes.Controllers
 
         private void OnEnable()
         {
+            GameCanvas gameCanvas = FindObjectOfType<GameCanvas>();
+
+            if (gameCanvas != null)
+            {
+                health.OnDead += gameCanvas.ShowGameOverPanel;
+                DisplayHealth displayHealth = gameCanvas.GetComponentInChildren<DisplayHealth>();
+                health.OnHealthChanged += displayHealth.WriteHealth;
+            }
             health.OnDead += () => OnPLayerDead(deadClip);
             health.OnHealthChanged += PlaySoundOnHit;
             
@@ -53,11 +63,11 @@ namespace Project4.Concretes.Controllers
         
         private void Update()
         {
+            GetAxis();
             PlayerJumpControl();
         }
         private void FixedUpdate()
         {
-            GetAxis();
             PlayerMovement();
             PlayerRunningAnim();
         }

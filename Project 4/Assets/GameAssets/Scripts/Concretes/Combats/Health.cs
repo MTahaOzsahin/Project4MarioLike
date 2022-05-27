@@ -17,6 +17,10 @@ namespace Project4.Concretes.Combats
         {
             currentHealth = maxHealth;
         }
+        private void Start()
+        {
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        }
         public void TakingHit(Damage damage)
         {
             if (IsDead) return;
